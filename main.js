@@ -1,5 +1,5 @@
 // main.js
-import { getLista } from "./lista.js";
+import { adicionarNaLista, getLista, limparLista } from "./lista.js";
 
 // Passo 1 - Ache os elementos importantes
 const pEntrada = document.querySelector('#entrada');
@@ -7,8 +7,23 @@ const olSaida = document.querySelector('#saida');
 const btnAdicionar = document.querySelector('#adicionar');
 const btnLimpar = document.querySelector('#limpar');
 
+btnLimpar.addEventListener('click', limparElementosDaLista);
+btnAdicionar.addEventListener('click', criarElementoNalista);
+
 atualizarItensDeLista();
-atualizarItensDeLista();
+
+function criarElementoNalista() {
+    const texto = pEntrada.textContent;
+    adicionarNaLista(texto);
+    atualizarItensDeLista();
+    pEntrada.textContent="";
+    pEntrada.focus();
+}
+
+function limparElementosDaLista(){
+    limparLista();
+    atualizarItensDeLista();
+}
 
 function atualizarItensDeLista (params) {
     olSaida.innerHTML = "";
